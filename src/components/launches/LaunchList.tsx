@@ -23,6 +23,7 @@ export default function LaunchList ({launches}:launcheProps){
           key={i.id}
           launch={i}
           onSelect={(launch) => setSelected(launch)}
+          isSelected={selected?.id === i.id}
         />
       )}
         <div className="flex gap-1 justify-center mt-4">

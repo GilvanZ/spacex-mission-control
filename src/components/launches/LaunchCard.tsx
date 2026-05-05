@@ -5,14 +5,16 @@ import { Launch } from '@/lib/spacex'
 interface LaunchCardProps {
   launch: Launch
   onSelect: (launch: Launch) => void
+  isSelected: boolean
 }
 const imgNotFound = "https://via.placeholder.com/150?text=No+Image"
 
 
-export default function LaunchCard({ launch, onSelect }: LaunchCardProps) {
+export default function LaunchCard({ launch, onSelect, isSelected }: LaunchCardProps) {
     const [rocketId, setRocketId] = useState(5)
     return (
-        <div onClick={() => onSelect(launch)} className=" h-24 overflow-hidden h2 cursor-pointer bg-gray-900 border border-gray-800 rounded-xl p-4 m-2 hover:border-gray-600 transition-all">
+        <div onClick={() => onSelect(launch)} className={`h-24 overflow-hidden cursor-pointer bg-gray-900 border rounded-xl p-4 m-2 transition-all ${isSelected ? 'border-blue-500' : 'border-gray-800 hover:border-gray-600'}`}
+>
             <div className="flex items-center gap-4">
                 {/* patch da missão */}
                 <div className="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center flex-shrink-0">
