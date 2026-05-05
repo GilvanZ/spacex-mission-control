@@ -15,7 +15,7 @@ export default function LaunchList ({launches}:launcheProps){
     const [page, setPage] = useState(0)
     const [selected, setSelected] = useState<Launch | null>(null)
     return (
-  <div className="grid gap-4" style={{ gridTemplateColumns: '1fr 1fr' }}>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4" >
     {/* coluna esquerda — lista */}
     <div className='sticky top-4 h-[600px] min-w-0'>
       {launches.slice(page * 5, page * 5 + 5).map((i) =>
@@ -43,7 +43,7 @@ export default function LaunchList ({launches}:launcheProps){
     </div>
 
     {/* coluna direita — painel de detalhes */}
-    <div className='w-90 min-w-0 sticky top-4'>
+    <div className='w-90 min-w-0 sticky top-4 bg-gray-900/60 backdrop-blur-sm rounded-xl p-2'>
       {selected ? (
         <div className="w-full overflow-hidden">
             <div 
@@ -59,7 +59,7 @@ export default function LaunchList ({launches}:launcheProps){
             <div className=" relative z-10 p-6 min-h-[300px]" >
                 <p className="text-white text-3xl font-bold">{selected.name}</p>
                 <p className="text-gray-400 mt-2">{new Date(selected.date_utc).toLocaleDateString()}</p>
-                <p className="text-gray-400 mt-1">{selected.rocket}</p>
+                <p className="text-gray-400 mt-1">Rocket ID: {selected.rocket}</p>
                 <p className="text-gray-400 mt-1">{selected.launch_site}</p>
                 <p className="text-gray-400 mt-1">{selected.details}</p><br/>
                 {selected.success?(
